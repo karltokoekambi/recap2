@@ -36,7 +36,7 @@ Route::get('/forms', function () {
 ////////////
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('dashboard.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -52,4 +52,34 @@ require __DIR__.'/auth.php';
 
 Route::get('/PAC', function () {
     return view('features.PAC.index');
+});
+Route::get('/AT', function () {
+    return view('features.AT.AT');
+});
+Route::get('/DISC', function () {
+    return view('features.Discipline.Discipline');
+});
+Route::get('/PRO', function () {
+    return view('features.Entretiens.Entretiens');
+});
+Route::get('/ETR', function () {
+    return view('features.Etranger.Etranger');
+});
+Route::get('/JS', function () {
+    return view('features.JourneeSolid.JourneeSolid');
+});
+Route::get('/MUT', function () {
+    return view('features.Mutuelle.Mutuelle');
+});
+Route::get('/TAN', function () {
+    return view('features.TAN.TAN');
+});
+Route::get('/TN', function () {
+    return view('features.TravailNuit.travailNuit');
+});
+Route::get('/VM', function () {
+    return view('features.VM.VisiteMedic');
+});
+Route::get('/PE', function () {
+    return view('features.PrimeEval.PrimeEval');
 });
