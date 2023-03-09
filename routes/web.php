@@ -73,9 +73,8 @@ Route::get('/DISC', function () {
 Route::get('/PRO', function () {
     return view('features.Entretiens.Entretiens');
 });
-Route::get('/ETR', function () {
-    return view('features.Etranger.Etranger');
-});
+Route::get('/ETR', [EtrangerController::class, 'indexEtranger']);
+
 Route::get('/JS', function () {
     return view('features.JourneeSolid.JourneeSolid');
 });

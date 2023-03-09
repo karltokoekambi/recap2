@@ -30,8 +30,7 @@ class VMController extends Controller
         return view('features.VM.VisiteMedic', [
             'visites' => $visites,
             'employes' => $employes,
-            'count' => $count,
-            'checked' => null
+            'count' => $count
         ]);
     }
 }
