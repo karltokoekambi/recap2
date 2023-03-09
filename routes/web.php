@@ -1,6 +1,17 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\featuresControllers\ATController;
+use App\Http\Controllers\featuresControllers\DisciplineController;
+use App\Http\Controllers\featuresControllers\EntretiensController;
+use App\Http\Controllers\featuresControllers\EtrangerController;
+use App\Http\Controllers\featuresControllers\JourneeSolidController;
+use App\Http\Controllers\featuresControllers\MutuelleController;
+use App\Http\Controllers\featuresControllers\PACController;
+use App\Http\Controllers\featuresControllers\PrimeEvalController;
+use App\Http\Controllers\featuresControllers\TANController;
+use App\Http\Controllers\featuresControllers\TravailNuitController;
+use App\Http\Controllers\featuresControllers\VMController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -77,9 +88,8 @@ Route::get('/TAN', function () {
 Route::get('/TN', function () {
     return view('features.TravailNuit.travailNuit');
 });
-Route::get('/VM', function () {
-    return view('features.VM.VisiteMedic');
-});
+Route::get('/VM', [VMController::class, 'indexVM']);
+
 Route::get('/PE', function () {
     return view('features.PrimeEval.PrimeEval');
 });
