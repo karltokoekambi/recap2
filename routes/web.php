@@ -64,29 +64,24 @@ require __DIR__.'/auth.php';
 Route::get('/PAC', function () {
     return view('features.PAC.index');
 });
-Route::get('/AT', function () {
-    return view('features.AT.AT');
-});
+Route::get('/AT', [ATController::class, 'indexAT']);
+
 Route::get('/DISC', function () {
     return view('features.Discipline.Discipline');
 });
-Route::get('/PRO', function () {
-    return view('features.Entretiens.Entretiens');
-});
+Route::get('/PRO', [EntretiensController::class, 'indexEntretiens']);
+
 Route::get('/ETR', [EtrangerController::class, 'indexEtranger']);
 
 Route::get('/JS', function () {
     return view('features.JourneeSolid.JourneeSolid');
 });
-Route::get('/MUT', function () {
-    return view('features.Mutuelle.Mutuelle');
-});
-Route::get('/TAN', function () {
-    return view('features.TAN.TAN');
-});
-Route::get('/TN', function () {
-    return view('features.TravailNuit.travailNuit');
-});
+Route::get('/MUT', [MutuelleController::class, 'indexMutuelle']);
+
+Route::get('/TAN', [TANController::class, 'indexTAN']);
+
+Route::get('/TN', [TravailNuitController::class, 'indexTN']);
+
 Route::get('/VM', [VMController::class, 'indexVM']);
 
 Route::get('/PE', function () {
