@@ -17,12 +17,12 @@ class DisciplineFactory extends Factory
     public function definition()
     {
         return [
-            'employé_id' => fake()->numberBetween(1, 10),
-            'remise_convocation' => fake()->date(),
-            'date_convocation' => fake()->date(),
-            'faits_reprochés' => fake()->text(),
+            'employe_id' => fake()->numberBetween(1, 10),
+            'remise_convocation' => fake()->date('d-m-Y'),
+            'date_convocation' => fake()->date('d-m-Y'),
+            'faits_reproches' => fake()->text(),
             'sanction' => fake()->word(),
-            'date_notification' => fake()->date(),
+            'date_notification' => fake()->date('d-m-Y'),
         ];
     }
 }

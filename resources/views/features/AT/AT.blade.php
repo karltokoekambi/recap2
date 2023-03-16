@@ -25,8 +25,8 @@
                         <tbody class="bg-white">
                         @foreach($at as $arret)
                             <tr>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $arret->employé_nom }}</td>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $arret->employé_prénom }}</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $arret->employe_nom }}</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $arret->employe_prenom }}</td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $arret->date_accident }}</td>
                                 @if($arret->lieu == 0)
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">X</td>

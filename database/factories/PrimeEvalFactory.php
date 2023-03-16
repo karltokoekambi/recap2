@@ -17,12 +17,11 @@ class PrimeEvalFactory extends Factory
     public function definition()
     {
         return [
-            'employé_id' => $this->faker->numberBetween(1,10),
-            'annee' => $this->faker->year(),
-            'mois' => $this->faker->numberBetween(1,12),
+            'employe_id' => $this->faker->numberBetween(1,10),
+            'date' => $this->faker->date('d-m-Y', 'now'),
             'note' => 'A',
             'montant_prime' => $this->faker->numberBetween(1,100),
-            'date_entretien' => $this->faker->date(),
+            'date_entretien' => $this->faker->date('d-m-Y'),
         ];
     }
 }

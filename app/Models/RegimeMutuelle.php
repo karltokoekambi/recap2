@@ -14,6 +14,6 @@ class RegimeMutuelle extends Model
     }
 
     public function employe(){
-        return $this->hasOne(Employé::class);
+        return $this->hasOne(Employe::class);
     }
 }

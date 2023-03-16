@@ -17,9 +17,8 @@ class TravailNuitFactory extends Factory
     public function definition()
     {
         return [
-            'employé_id' => \App\Models\Employé::factory(),
-            'annee' => 2021,
-            'mois' => $this->faker->numberBetween(1, 12),
+            'employe_id' => \App\Models\Employe::factory(),
+            'date' => $this->faker->date('d-m-Y', 'now'),
             'nb_heures' => $this->faker->numberBetween(0, 100),
             'nb_nuits_penibles' => $this->faker->numberBetween(0, 100),
         ];

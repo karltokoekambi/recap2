@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('postes', function (Blueprint $table) {
             $table->id();
-            $table->mediumText('intitulé');
+            $table->mediumText('intitule');
             $table->boolean('cadre')->default(false);
             $table->timestamps();
         });

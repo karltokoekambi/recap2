@@ -10,6 +10,6 @@ class Discipline extends Model
     use HasFactory;
 
     public function employe(){
-        return $this->BelongsTo(Employé::class);
+        return $this->BelongsTo(Employe::class);
     }
 }

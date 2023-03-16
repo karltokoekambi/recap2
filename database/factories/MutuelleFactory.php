@@ -17,7 +17,7 @@ class MutuelleFactory extends Factory
     public function definition()
     {
         return [
-            'intitulé' => $this->faker->word,
+            'intitule' => $this->faker->word,
         ];
     }
 }

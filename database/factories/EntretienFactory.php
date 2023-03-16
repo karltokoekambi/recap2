@@ -17,7 +17,7 @@ class EntretienFactory extends Factory
     public function definition()
     {
         return [
-            'employé_id' => $this->faker->numberBetween(1, 10),
+            'employe_id' => $this->faker->numberBetween(1, 10),
             'dateEntretien' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'bilan' => $this->faker->boolean,
         ];

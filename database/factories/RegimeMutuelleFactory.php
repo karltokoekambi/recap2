@@ -17,12 +17,12 @@ class RegimeMutuelleFactory extends Factory
     public function definition()
     {
         return [
-            'employé_id' => $this->faker->numberBetween(1, 10),
+            'employe_id' => $this->faker->numberBetween(1, 10),
             'mutuelle_id' => $this->faker->numberBetween(1, 10),
             'nb_enfants' => $this->faker->numberBetween(0, 10),
             'conjoint' => $this->faker->boolean,
-            'date_deb_CMU' => $this->faker->date,
-            'date_fin_CMU' => $this->faker->date,
+            'date_deb_CMU' => $this->faker->date('d-m-Y'),
+            'date_fin_CMU' => $this->faker->date('d-m-Y'),
         ];
     }
 }

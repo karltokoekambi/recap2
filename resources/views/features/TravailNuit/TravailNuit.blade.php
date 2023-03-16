@@ -7,9 +7,9 @@
         <input type="checkbox">
         <label for="checkbox">Afficher les mecs avec date de sortie</label>
         <select name="years" id="year-select">
-            <option value="">choix de l'année</option>
-            @foreach($listeAnnées as $année)
-                <option value="{{$année}}">{{$année->annee}}</option>
+            <option value="">choix de l'annee</option>
+            @foreach($listeAnnees as $annee)
+                <option value="{{$annee}}">{{$annee->annee}}</option>
             @endforeach
         </select>
 
@@ -20,9 +20,9 @@
                         <thead>
                         <tr>
                             <th class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider" colspan="4"></th>
-                            @foreach($listeAnnées as $année)
+                            @foreach($listeAnnees as $annee)
                                 @foreach($listeMois as $mois)
-                                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider" colspan="2">{{ $mois }}-{{ $année->annee }}</th>
+                                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider" colspan="2">{{ $mois }}-{{ $annee->annee }}</th>
                                 @endforeach
                                 <th class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider" colspan="2">TOTAUX</th>
                             @endforeach
@@ -32,7 +32,7 @@
                             <th class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">PRENOM</th>
                             <th class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">DATE D'ENTREE</th>
                             <th class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">DATE DE SORTIE</th>
-                            @foreach($listeAnnées as $année)
+                            @foreach($listeAnnees as $annee)
                                 @foreach($listeMois as $i => $mois)
                                     <th class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">HEURES NUIT</th>
                                     <th class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">NB NUITS PENIBLES</th>
@@ -46,18 +46,18 @@
                         @foreach($employes as $emp)
                             <tr>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $emp->nom }}</td>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $emp->prénom }}</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $emp->prenom }}</td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $emp->date_entree }}</td>
                                 @if($emp->date_sortie)
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $emp->date_sortie }}</td>
                                 @else
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"></td>
                                 @endif
-                                @foreach($listeAnnées as $année)
+                                @foreach($listeAnnees as $annee)
                                     @foreach($listeMois as $i => $mois)
                                         <?php $flag = false; ?>
                                         @foreach($travauxNuit as $trav)
-                                            @if($trav->employé_id == $emp->id && $trav->mois == $i && $trav->annee == $année->annee)
+                                            @if($trav->employe_id == $emp->id && $trav->mois == $i && $trav->annee == $annee->annee)
                                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $trav->nb_heures }}</td>
                                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $trav->nb_nuits_penibles }}</td>
                                                 <?php $flag = true; ?>
@@ -70,7 +70,7 @@
                                     @endforeach
                                     @foreach($ttlheures as $ttl)
                                         <?php $flag = false; ?>
-                                        @if($ttl->employé_id == $emp->id && $ttl->annee == $année->annee)
+                                        @if($ttl->employe_id == $emp->id && $ttl->annee == $annee->annee)
                                             @if($ttl->ttlheures>359)
                                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 table-danger">{{ $ttl->ttlheures }}</td>
                                             @else()

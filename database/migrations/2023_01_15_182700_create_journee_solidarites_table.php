@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('journee_solidarites', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('employé_id');
-            $table->foreign('employé_id')->references('id')->on('employés');
+            $table->unsignedBigInteger('employe_id');
+            $table->foreign('employe_id')->references('id')->on('employes');
             $table->date('dateJS');
             $table->integer('nb_heures_a_faire');
-            $table->integer('nb_heures_effectuées');
+            $table->integer('nb_heures_effectuees');
             $table->boolean('emargement')->default(false);
             $table->timestamps();
         });

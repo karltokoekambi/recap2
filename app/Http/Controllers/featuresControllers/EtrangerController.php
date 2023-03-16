@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\featuresControllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Employé;
-use App\Models\HeuresEffectuées;
+use App\Models\Employe;
+use App\Models\HeuresEffectuees;
 
 class EtrangerController extends Controller
 {
     public function index(){
-        $etrangers = Employé::where('nationalité', '!=', NULL)->get();
-        $heuresEtrangers = HeuresEffectuées::join('employés', 'employés.id', '=', 'heures_effectuées.employé_id')
-            ->where('employés.nationalité', '!=', NULL)
+        $etrangers = Employe::where('nationalite', '!=', NULL)->get();
+        $heuresEtrangers = HeuresEffectuees::join('employes', 'employes.id', '=', 'heures_effectuees.employe_id')
+            ->where('employes.nationalite', '!=', NULL)
             ->get();
-        $mineurs = Employé::where('date_de_naissance', '>', date('Y-m-d', strtotime('-18 years')))->get();
-        $rqths = Employé::where('date_fin_rqth', '!=', NULL)->get();
+        $mineurs = Employe::where('date_naissance', '>', date('d-m-Y', strtotime('-18 years')))->get();
+        $rqths = Employe::where('date_fin_rqth', '!=', NULL)->get();
         //dd($heuresEtrangers);
         return view('features.Etranger.Etranger', [
             'etrangers' => $etrangers ,

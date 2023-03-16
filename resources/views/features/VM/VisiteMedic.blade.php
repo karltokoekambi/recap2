@@ -28,17 +28,17 @@
                                     <div class="text-sm leading-5 font-medium text-gray-900">{{ $employe->nom }}</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="text-sm leading-5 text-gray-900">{{ $employe->prénom }}</div>
+                                    <div class="text-sm leading-5 text-gray-900">{{ $employe->prenom }}</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                     <div class="text-sm leading-5 text-gray-900">{{ $employe->date_entree }}</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="text-sm leading-5 text-gray-900">{{ $employe->visite_médicale_entree }}</div>
+                                    <div class="text-sm leading-5 text-gray-900">{{ $employe->visite_medicale_entree }}</div>
                                 </td>
                                 <?php $i = 0; ?>
                                 @foreach($visites as $visite)
-                                    @if($visite->employé_id == $employe->id)
+                                    @if($visite->employe_id == $employe->id)
                                         <?php $i++; ?>
                                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                             <div class="text-sm leading-5 text-gray-900">{{ $visite->date_visite }}</div>

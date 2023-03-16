@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('accident_travails', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('employé_id');
-            $table->foreign('employé_id')->references('id')->on('employés');
+            $table->unsignedBigInteger('employe_id');
+            $table->foreign('employe_id')->references('id')->on('employes');
             $table->date('date_accident');
             $table->date('date_declaration');
             $table->boolean('lieu');//0: trajet, 1: travail

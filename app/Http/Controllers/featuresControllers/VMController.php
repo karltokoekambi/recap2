@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\featuresControllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Employé;
+use App\Models\Employe;
 use App\Models\VisiteMedicale;
 
 class VMController extends Controller
@@ -11,12 +11,12 @@ class VMController extends Controller
     public function index(){
 
         $visites = VisiteMedicale::orderBy('date_visite')->get();
-        $employes = Employé::all();
+        $employes = Employe::all();
         $count = 0;
         foreach($employes as $employe) {
             $tempcount = 0;
             foreach($visites as $visite){
-                if($visite->employé_id == $employe->id) {
+                if($visite->employe_id == $employe->id) {
                     $tempcount++;
                 }
             }

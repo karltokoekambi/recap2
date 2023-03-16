@@ -17,7 +17,7 @@ class PosteFactory extends Factory
     public function definition()
     {
         return [
-            'intitulé' => $this->faker->sentence,
+            'intitule' => $this->faker->word,
             'cadre' => $this->faker->boolean,
         ];
     }

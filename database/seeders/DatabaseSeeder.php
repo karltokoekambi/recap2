@@ -7,10 +7,10 @@ use Illuminate\Database\Seeder;
 use App\Models\Absence;
 use App\Models\AccidentTravail;
 use App\Models\Discipline;
-use App\Models\Employé;
+use App\Models\Employe;
 use App\Models\Entretien;
 use App\Models\HeuresContrat;
-use App\Models\HeuresEffectuées;
+use App\Models\HeuresEffectuees;
 use App\Models\JourneeSolidarite;
 use App\Models\Mutuelle;
 use App\Models\Poste;
@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
     {
         Restaurant::factory(10)->create();
         Poste::factory(10)->create();
-        Employé::factory(10)->create();
+        Employe::factory(10)->create();
         Mutuelle::factory(10)->create();
         RegimeMutuelle::factory(10)->create();
         TypeAbsence::factory(10)->create();
@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder
         Discipline::factory(10)->create();
         Entretien::factory(10)->create();
         HeuresContrat::factory(10)->create();
-        HeuresEffectuées::factory(10)->create();
+        HeuresEffectuees::factory(10)->create();
         JourneeSolidarite::factory(10)->create();
 
         // \App\Models\User::factory()->create([

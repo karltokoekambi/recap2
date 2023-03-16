@@ -17,10 +17,9 @@ class AbsenceFactory extends Factory
     public function definition()
     {
         return [
-            'employé_id' => $this->faker->numberBetween(1, 10),
+            'employe_id' => $this->faker->numberBetween(1, 10),
             'type_absence_id' => $this->faker->numberBetween(1, 10),
-            'mois' => $this->faker->numberBetween(1, 12),
-            'annee' => $this->faker->year,
+            'date' => $this->faker->date('d-m-Y', 'now'),
             'nb_jours_absence' => $this->faker->numberBetween(1, 30),
         ];
     }

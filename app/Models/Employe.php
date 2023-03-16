@@ -5,31 +5,31 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Employé extends Model
+class Employe extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'nom',
-        'prénom',
-        'date_de_naissance',
+        'prenom',
+        'date_naissance',
         'date_entree',
         'date_sortie',
         'poste_id',
         'date_fin_rqth',
-        'nationalité',
-        'début_validité',
-        'fin_validité',
+        'nationalite',
+        'debut_validite',
+        'fin_validite',
         'numSecu_provisoire',
         'observations',
         'suivi_indiv',
         'saisie_webplace',
         'date_demande',
         'prochaine_VM',
-        'visite_médicale_entree',
+        'visite_medicale_entree',
         'inscription_openclassroom',
         'date_don_carte_commerçant',
-        'papier_McBooster_signé',
+        'papier_McBooster_signe',
         'date_don_carte_McBooster',
         'montant_abonnement_mensuel_TAN',
         'fin_abonnement_TAN',
@@ -50,8 +50,8 @@ class Employé extends Model
         return $this->hasMany(HeuresContrat::class);
     }
 
-    public function heuresEfectuées(){
-        return $this->hasMany(HeuresEffectuées::class);
+    public function heuresEfectuees(){
+        return $this->hasMany(HeuresEffectuees::class);
     }
 
     public function regimeMutuelle(){

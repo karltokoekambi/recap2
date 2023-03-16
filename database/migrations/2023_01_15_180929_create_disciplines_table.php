@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('disciplines', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('employé_id');
-            $table->foreign('employé_id')->references('id')->on('employés');
+            $table->unsignedBigInteger('employe_id');
+            $table->foreign('employe_id')->references('id')->on('employes');
             $table->date('remise_convocation')->nullable();
             $table->date('date_convocation')->nullable();
-            $table->longText('faits_reprochés');
+            $table->longText('faits_reproches');
             $table->mediumText('sanction');
             $table->date('date_notification')->nullable();
             $table->timestamps();

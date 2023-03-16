@@ -15,12 +15,11 @@ return new class extends Migration
     {
         Schema::create('absences', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('employé_id');
-            $table->foreign('employé_id')->references('id')->on('employés');
+            $table->unsignedBigInteger('employe_id');
+            $table->foreign('employe_id')->references('id')->on('employes');
             $table->unsignedBigInteger('type_absence_id');
             $table->foreign('type_absence_id')->references('id')->on('type_absences');
-            $table->year('annee');
-            $table->integer('mois');
+            $table->date('date');
             $table->integer('nb_jours_absence');
             $table->timestamps();
         });

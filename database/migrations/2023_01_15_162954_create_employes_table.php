@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('employés', function (Blueprint $table) {
+        Schema::create('employes', function (Blueprint $table) {
             $table->id();
             $table->mediumText('nom');
-            $table->mediumText('prénom');
-            $table->date('date_de_naissance');
+            $table->mediumText('prenom');
+            $table->date('date_naissance');
             $table->date('date_entree');
             $table->date('date_sortie')->nullable();
             $table->unsignedBigInteger('poste_id');
@@ -31,12 +31,12 @@ return new class extends Migration
             $table->date('fin_abonnement_TAN')->nullable();
             $table->float('montant_abonnement_mensuel_TAN')->nullable();
             $table->date('date_don_carte_McBooster')->nullable();
-            $table->boolean('papier_McBooster_signé')->default(false);
+            $table->boolean('papier_McBooster_signe')->default(false);
             $table->date('date_don_carte_commerçant')->nullable();
             $table->boolean('inscription_openclassroom')->default(false);
 
             //VM
-            $table->date('visite_médicale_entree')->nullable();
+            $table->date('visite_medicale_entree')->nullable();
             $table->date('prochaine_VM')->nullable();
             $table->date('date_demande')->nullable();
             $table->mediumText('observations')->nullable();
@@ -44,9 +44,9 @@ return new class extends Migration
             $table->tinyText('suivi_indiv')->nullable();
 
             //ETRANGER
-            $table->mediumText('nationalité')->nullable();
-            $table->date('debut_validité')->nullable();
-            $table->date('fin_validité')->nullable();
+            $table->mediumText('nationalite')->nullable();
+            $table->date('debut_validite')->nullable();
+            $table->date('fin_validite')->nullable();
             $table->bigInteger('numSecu_provisoire')->nullable();
 
             //RQTH
@@ -63,6 +63,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employés');
+        Schema::dropIfExists('employes');
     }
 };

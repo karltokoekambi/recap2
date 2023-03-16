@@ -2,7 +2,7 @@
 
 @section('body')
     <div class="p-6 bg-white rounded-md shadow-md">
-        <h2 class="text-lg text-gray-700 font-semibold capitalize">Détails employé</h2>
+        <h2 class="text-lg text-gray-700 font-semibold capitalize">Details employe</h2>
 
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -23,7 +23,7 @@
                 </div>
 
                 <div>
-                    <label class="text-gray-700" for="firstname">Prénom</label>
+                    <label class="text-gray-700" for="firstname">Prenom</label>
                     <input class="form-input w-full mt-2 rounded-md focus:border-indigo-600" type="text" name="firstname">
                 </div>
 
@@ -33,7 +33,7 @@
                 </div>
 
                 <div>
-                    <label class="text-gray-700" for="indate">Date d'entrée</label>
+                    <label class="text-gray-700" for="indate">Date d'entree</label>
                     <input class="form-input w-full mt-2 rounded-md focus:border-indigo-600" type="date" name="indate">
                 </div>
 
@@ -41,7 +41,7 @@
                     <label class="text-gray-700" for="poste">Poste</label>
                     <select class="form-input w-full mt-2 rounded-md focus:border-indigo-600" name="poste">
                     @foreach($postes as $poste)
-                        <option value="{{ $poste->id }}">{{ $poste->intitulé }}</option>
+                        <option value="{{ $poste->id }}">{{ $poste->intitule }}</option>
                     @endforeach
                     </select>
                 </div>
@@ -54,26 +54,26 @@
             </div>
             <br>
 
-            <h4 class="text-gray-600">Si étranger</h4>
+            <h4 class="text-gray-600">Si etranger</h4>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
                 <div>
-                    <label class="text-gray-700" for="nationality">Nationalité</label>
+                    <label class="text-gray-700" for="nationality">Nationalite</label>
                     <input class="form-input w-full mt-2 rounded-md focus:border-indigo-600" type="text" name="nationality">
                 </div>
 
                 <div>
-                    <label class="text-gray-700" for="startvisa">Début de validité visa</label>
+                    <label class="text-gray-700" for="startvisa">Debut de validite visa</label>
                     <input class="form-input w-full mt-2 rounded-md focus:border-indigo-600" type="date" name="startvisa">
                 </div>
 
                 <div>
-                    <label class="text-gray-700" for="endvisa">Fin de validité visa</label>
+                    <label class="text-gray-700" for="endvisa">Fin de validite visa</label>
                     <input class="form-input w-full mt-2 rounded-md focus:border-indigo-600" type="date" name="endvisa">
                 </div>
 
                 <div>
-                    <label class="text-gray-700" for="numSec">Numéro de Sécurité sociale provisoire</label>
+                    <label class="text-gray-700" for="numSec">Numero de Securite sociale provisoire</label>
                     <input class="form-input w-full mt-2 rounded-md focus:border-indigo-600" type="number" name="numSec">
                 </div>
 

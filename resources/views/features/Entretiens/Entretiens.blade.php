@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.master')
 
 @section('body')
-    Il faut penser à mettre les cases en fond rouge lorsque la date est dépasée
+    Il faut penser à mettre les cases en fond rouge lorsque la date est depasee
         <h2 class="text-center">ENTRETIENS PRO</h2>
         <button>ajouter un entretien</button>
         <div class="flex flex-col mt-6">
@@ -10,8 +10,8 @@
                     <table class="min-w-full">
                         <thead>
                         <tr>
-                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider" colspan="3">Tous les 2 ans ou : retour de congé mater, parental, adoption,
-                                sabbatique, proche aidant, mobilité volontaire, AM + 6 mois</th>
+                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider" colspan="3">Tous les 2 ans ou : retour de conge mater, parental, adoption,
+                                sabbatique, proche aidant, mobilite volontaire, AM + 6 mois</th>
                             <th class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider" colspan="{{ $countEntretien+1 }}">ENTRETIENS PROFESSIONELS</th>
                             <th class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider" colspan="{{ $countBilan+1 }}">BILAN PROFESSIONNEL</th>
                         </tr>
@@ -33,11 +33,11 @@
                         @foreach($employes as $j => $employe)
                             <tr>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $employe->nom }}</td>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $employe->prénom }}</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $employe->prenom }}</td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $employe->date_entree }}</td>
                                 <?php $i = 0; ?>
                                 @foreach($entretiens as $entretien)
-                                    @if($entretien->employé_id == $employe->id && !$entretien->bilan)
+                                    @if($entretien->employe_id == $employe->id && !$entretien->bilan)
                                         <?php $i++; ?>
                                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $entretien->dateEntretien }}</td>
                                     @endif
@@ -48,7 +48,7 @@
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $employe->prochainedateEntretien }}</td>
                                 <?php $i = 0; ?>
                                 @foreach($entretiens as $entretien)
-                                    @if($entretien->employé_id == $employe->id && $entretien->bilan)
+                                    @if($entretien->employe_id == $employe->id && $entretien->bilan)
                                         <?php $i++; ?>
                                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $entretien->dateEntretien }}</td>
                                     @endif

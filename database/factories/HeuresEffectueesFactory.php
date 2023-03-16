@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\VisiteMedicale>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\HeuresEffectuees>
  */
-class VisiteMedicaleFactory extends Factory
+class HeuresEffectueesFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,8 +18,8 @@ class VisiteMedicaleFactory extends Factory
     {
         return [
             'employe_id' => $this->faker->numberBetween(1, 10),
-            'date_visite' => $this->faker->dateTimeBetween('-1 year', 'now'),
-            'commentaire' => $this->faker->text(),
+            'date' => $this->faker->date('d-m-Y', 'now'),
+            'nb_heures_effectuees' => $this->faker->numberBetween(1,151),
         ];
     }
 }

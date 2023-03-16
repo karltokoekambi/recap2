@@ -10,6 +10,6 @@ class AccidentTravail extends Model
     use HasFactory;
 
     public function employe(){
-        return $this->belongsTo(Employé::class);
+        return $this->belongsTo(Employe::class);
     }
 }

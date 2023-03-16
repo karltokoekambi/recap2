@@ -24,14 +24,14 @@
                         @foreach($mutuelles as $mutu)
                             <tr>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $mutu->nom }}</td>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $mutu->prénom }}</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $mutu->prenom }}</td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $mutu->date_entree }}</td>
                                 <?php $flag = false; ?>
                             @foreach($listeRegimes as $regime)
-                                @if($regime->employé_id == $mutu->id)
+                                @if($regime->employe_id == $mutu->id)
                                     @foreach($typesMutuelle as $type)
                                         @if($type->id == $regime->mutuelle_id)
-                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $type->intitulé }}</td>
+                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $type->intitule }}</td>
                                             <?php $flag = true; ?>
                                             @endif
                                         @endforeach
@@ -45,7 +45,7 @@
                                 @endif
                             <?php $flag = false; ?>
                                 @foreach($listeRegimes as $regime)
-                                    @if($regime->employé_id == $mutu->id)
+                                    @if($regime->employe_id == $mutu->id)
                                         @foreach($typesMutuelle as $type)
                                             @if($type->id == $regime->mutuelle_id)
                                                 @if($regime->conjoint)

@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('heures_effectuées', function (Blueprint $table) {
+        Schema::create('heures_effectuees', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('employé_id');
-            $table->foreign('employé_id')->references('id')->on('employés');
-            $table->year('année');
-            $table->integer('mois');
-            $table->float('nb_heures_effectuées');
+            $table->unsignedBigInteger('employe_id');
+            $table->foreign('employe_id')->references('id')->on('employes');
+            $table->date('date');
+            $table->float('nb_heures_effectuees');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('heures_effectuées');
+        Schema::dropIfExists('heures_effectuees');
     }
 };
