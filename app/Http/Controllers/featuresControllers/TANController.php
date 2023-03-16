@@ -8,7 +8,7 @@ use App\Models\Employé;
 class TANController extends Controller
 {
     //
-    public function indexTAN(){
+    public function index(){
 
         $datas = Employé::all();
         return view('features.TAN.TAN', [

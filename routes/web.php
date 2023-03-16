@@ -60,30 +60,52 @@ require __DIR__.'/auth.php';
 
 
 //////////////
-
-Route::get('/PAC', function () {
-    return view('features.PAC.index');
+Route::prefix('/PAC')->name('pac.')->group( function(){
+    Route::get('/', [PACController::class, 'index'])->name('index');
+    Route::get('/create', [PACController::class, 'create'])->name('create');
+    Route::post('/save', [PACController::class, 'save'])->name('save');
 });
-Route::get('/AT', [ATController::class, 'indexAT']);
 
-Route::get('/DISC', function () {
-    return view('features.Discipline.Discipline');
+Route::prefix('/AT')->name('at.')->group( function(){
+    Route::get('/', [ATController::class, 'index'])->name('index');
 });
-Route::get('/PRO', [EntretiensController::class, 'indexEntretiens']);
 
-Route::get('/ETR', [EtrangerController::class, 'indexEtranger']);
-
-Route::get('/JS', function () {
-    return view('features.JourneeSolid.JourneeSolid');
+Route::prefix('/disc')->name('disc.')->group( function(){
+    Route::get('/', [DisciplineController::class, 'index'])->name('index');
 });
-Route::get('/MUT', [MutuelleController::class, 'indexMutuelle']);
 
-Route::get('/TAN', [TANController::class, 'indexTAN']);
+Route::prefix('/pro')->name('pro.')->group( function(){
+    Route::get('/', [EntretiensController::class, 'index'])->name('index');
+});
 
-Route::get('/TN', [TravailNuitController::class, 'indexTN']);
+Route::prefix('/etr')->name('etr.')->group( function(){
+    Route::get('/', [EtrangerController::class, 'index'])->name('index');
+});
 
-Route::get('/VM', [VMController::class, 'indexVM']);
+Route::prefix('/js')->name('js.')->group( function(){
+    Route::get('/', function () {
+        return view('features.JourneeSolid.JourneeSolid');
+    })->name('index');
+});
 
-Route::get('/PE', function () {
-    return view('features.PrimeEval.PrimeEval');
+Route::prefix('/mut')->name('mut.')->group( function(){
+    Route::get('/', [MutuelleController::class, 'index'])->name('index');
+});
+
+Route::prefix('/tan')->name('tan.')->group( function(){
+    Route::get('/', [TANController::class, 'index'])->name('index');
+});
+
+Route::prefix('/tn')->name('tn.')->group( function(){
+    Route::get('/', [TravailNuitController::class, 'index'])->name('index');
+});
+
+Route::prefix('/vm')->name('vm.')->group( function(){
+    Route::get('/', [VMController::class, 'index'])->name('index');
+});
+
+Route::prefix('/pe')->name('pe.')->group( function(){
+    Route::get('/', function () {
+        return view('features.PrimeEval.PrimeEval');
+    })->name('index');
 });

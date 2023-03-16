@@ -8,7 +8,7 @@ use App\Models\VisiteMedicale;
 
 class VMController extends Controller
 {
-    public function indexVM(){
+    public function index(){
 
         $visites = VisiteMedicale::orderBy('date_visite')->get();
         $employes = Employé::all();

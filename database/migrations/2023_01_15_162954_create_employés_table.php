@@ -26,7 +26,7 @@ return new class extends Migration
             $table->foreign('restaurant_id')->references('id')->on('restaurants');
 
             //TAN OU CARTES
-            $table->integer('abonnement_TAN');//0: non, 1: mensuel, 2: annuel
+            $table->integer('abonnement_TAN')->default(0);//0: non, 1: mensuel, 2: annuel
             $table->date('debut_abonnement_TAN')->nullable();
             $table->date('fin_abonnement_TAN')->nullable();
             $table->float('montant_abonnement_mensuel_TAN')->nullable();

@@ -1,6 +1,10 @@
 @extends('dashboard.layouts.master')
 
 @section('body')
+
+    <a href="{{route('pac.create')}}">
+        <button class="px-6 py-3 bg-blue-600 rounded-md text-white font-medium tracking-wide hover:bg-blue-500 ml-3">Ajouter un employé</button>
+    </a>
         <div class="flex flex-col mt-6">
             <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
                 <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
@@ -32,28 +36,30 @@
                         </thead>
 
                         <tbody class="bg-white">
-                        @for($i = 0; $i < 10; $i++)
+                        @foreach($employes as $emp)
                         <tr>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                 <div class="ml-4">
-                                    <div class="text-sm leading-5 font-medium text-gray-900">Doe</div>
+                                    <div class="text-sm leading-5 font-medium text-gray-900">{{ $emp->nom }}</div>
                                 </div>
                             </td>
 
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="text-sm leading-5 text-gray-900">John</div>
+                                <div class="text-sm leading-5 text-gray-900">{{ $emp->prénom }}</div>
                             </td>
 
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="text-sm leading-5 text-gray-900">18/01/2021</div>
+                                <div class="text-sm leading-5 text-gray-900">{{ $emp->date_entree }}</div>
                             </td>
 
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500"></td>
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                <div class="text-sm leading-5 text-gray-900">{{ $emp->date_sortie }}</div>
+                            </td>
                             @for($j = 0; $j < 12; $j++)
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">datamois</td>
                             @endfor
                         </tr>
-                        @endfor
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

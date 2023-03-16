@@ -8,7 +8,7 @@ use App\Models\HeuresEffectuées;
 
 class EtrangerController extends Controller
 {
-    public function indexEtranger(){
+    public function index(){
         $etrangers = Employé::where('nationalité', '!=', NULL)->get();
         $heuresEtrangers = HeuresEffectuées::join('employés', 'employés.id', '=', 'heures_effectuées.employé_id')
             ->where('employés.nationalité', '!=', NULL)

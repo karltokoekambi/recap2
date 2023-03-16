@@ -10,7 +10,7 @@ use App\Models\RegimeMutuelle;
 
 class MutuelleController extends Controller
 {
-    public function indexMutuelle(){
+    public function index(){
 
         $mutuelles = Employé::addSelect(['cadre' => Poste::select('cadre')->whereColumn('poste_id', 'id')])
             ->get();

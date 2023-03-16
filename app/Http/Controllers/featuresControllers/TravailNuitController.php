@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class TravailNuitController extends Controller
 {
-    public function indexTN(){
+    public function index(){
         $listeMois = [
             1 => 'Janvier',
             2 => 'Février',

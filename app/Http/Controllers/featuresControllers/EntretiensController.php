@@ -8,7 +8,7 @@ use App\Models\Entretien;
 
 class EntretiensController extends Controller
 {
-    public function indexEntretiens(){
+    public function index(){
 
         $entretiens = Entretien::orderBy('dateEntretien')->get();
         $employes = Employé::addSelect(['prochainedateEntretien' => Entretien::select('dateEntretien')->whereColumn('employé_id', 'employés.id')->where('bilan', '=', 0)->orderBy('dateEntretien', 'desc')->limit(1)])
