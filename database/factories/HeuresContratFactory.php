@@ -19,7 +19,6 @@ class HeuresContratFactory extends Factory
     {
         return [
             'employe_id' => $this->faker->numberBetween(1, 10),
-            'date' => $this->faker->date('Y-m-d', 'now'),
             'date_reception' => $this->faker->date('Y-m-d'),
             'date_effet' => $this->faker->date('Y-m-d'),
             'nb_heures_mois' => $this->faker->numberBetween(1,151),

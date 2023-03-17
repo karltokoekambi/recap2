@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('employe_id');
             $table->foreign('employe_id')->references('id')->on('employes');
-            $table->date('date');
             $table->date('date_reception');
             $table->date('date_effet');
             $table->float('nb_heures_mois');

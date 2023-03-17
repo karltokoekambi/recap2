@@ -12,6 +12,13 @@ class HeuresContrat extends Model
 
     use HasFactory;
 
+    protected $fillable = [
+        'employe_id',
+        'date_reception',
+        'date_effet',
+        'nb_heures_mois',
+    ];
+
     public function employe(){
         return $this->belongsTo(Employe::class);
     }

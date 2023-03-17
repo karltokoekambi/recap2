@@ -65,7 +65,10 @@ Route::prefix('/PAC')->name('pac.')->group( function(){
     Route::get('/create', [PACController::class, 'create'])->name('create');
     Route::post('/save', [PACController::class, 'save'])->name('save');
 
-    Route::post('/abscreate', [PACController::class, 'abscreate'])->name('abscreate');
+    Route::get('/abscreate', [PACController::class, 'abscreate'])->name('abscreate');
+
+    Route::get('/contractcreate', [PACController::class, 'contractcreate'])->name('contractcreate');
+    Route::post('/contractsave', [PACController::class, 'contractsave'])->name('contractsave');
 });
 
 Route::prefix('/AT')->name('at.')->group( function(){
