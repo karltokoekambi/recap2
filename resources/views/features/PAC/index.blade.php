@@ -5,6 +5,14 @@
     <a href="{{route('pac.create')}}">
         <button class="px-6 py-3 bg-blue-600 rounded-md text-white font-medium tracking-wide hover:bg-blue-500 ml-3">Ajouter un employé</button>
     </a>
+
+        <select class="px-6 py-3 bg-blue-600 rounded-md text-white font-medium tracking-wide hover:bg-blue-500 ml-3" name="abs">
+            <option>Ajouter une absence</option>
+            @foreach($absences as $abs)
+                <option value="{{ $abs->id }}">{{ $abs->libelle }}</option>
+            @endforeach
+        </select>
+
         <div class="flex flex-col mt-6">
             <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
                 <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">

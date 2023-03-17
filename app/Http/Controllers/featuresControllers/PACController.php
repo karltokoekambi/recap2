@@ -6,6 +6,7 @@ use App\Http\Requests\StoreEmployeeRequest;
 use App\Models\Employe;
 use App\Http\Controllers\Controller;
 use App\Models\Poste;
+use App\Models\TypeAbsence;
 use Illuminate\Http\Request;
 
 class PACController extends Controller
@@ -13,7 +14,8 @@ class PACController extends Controller
     public function index(){
         return view('features.PAC.index', [
             'employes' => Employe::select('nom','prenom','date_entree','date_sortie')
-                ->get()
+                ->get(),
+            'absences' => TypeAbsence::all()
         ]);
     }
 
