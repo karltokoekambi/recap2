@@ -18,13 +18,13 @@ class AccidentTravailFactory extends Factory
     {
         return [
             'employe_id' => $this->faker->numberBetween(1, 10),
-            'date_accident' => $this->faker->date('d-m-Y'),
-            'date_declaration' => $this->faker->date('d-m-Y'),
+            'date_accident' => $this->faker->date('Y-m-d'),
+            'date_declaration' => $this->faker->date('Y-m-d'),
             'lieu' => $this->faker->boolean(),
             'commentaire' => $this->faker->sentence(),
             'lesions' => $this->faker->word(),
-            'date_debut_arret' => $this->faker->date('d-m-Y'),
-            'date_fin_arret' => $this->faker->date('d-m-Y'),
+            'date_debut_arret' => $this->faker->date('Y-m-d'),
+            'date_fin_arret' => $this->faker->date('Y-m-d'),
             'prise_en_charge_CPAM' => $this->faker->boolean(),
         ];
     }

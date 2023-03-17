@@ -18,7 +18,7 @@ class JourneeSolidariteFactory extends Factory
     {
         return [
             'employe_id' => $this->faker->numberBetween(1, 10),
-            'dateJS' => $this->faker->date('d-m-Y'),
+            'dateJS' => $this->faker->date('Y-m-d'),
             'nb_heures_a_faire' => $this->faker->numberBetween(1, 10),
             'nb_heures_effectuees' => $this->faker->numberBetween(1, 10),
             'emargement' => $this->faker->boolean,

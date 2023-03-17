@@ -21,8 +21,8 @@ class RegimeMutuelleFactory extends Factory
             'mutuelle_id' => $this->faker->numberBetween(1, 10),
             'nb_enfants' => $this->faker->numberBetween(0, 10),
             'conjoint' => $this->faker->boolean,
-            'date_deb_CMU' => $this->faker->date('d-m-Y'),
-            'date_fin_CMU' => $this->faker->date('d-m-Y'),
+            'date_deb_CMU' => $this->faker->date('Y-m-d'),
+            'date_fin_CMU' => $this->faker->date('Y-m-d'),
         ];
     }
 }

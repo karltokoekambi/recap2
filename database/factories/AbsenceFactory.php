@@ -19,7 +19,7 @@ class AbsenceFactory extends Factory
         return [
             'employe_id' => $this->faker->numberBetween(1, 10),
             'type_absence_id' => $this->faker->numberBetween(1, 10),
-            'date' => $this->faker->date('d-m-Y', 'now'),
+            'date' => $this->faker->date('Y-m-d', 'now'),
             'nb_jours_absence' => $this->faker->numberBetween(1, 30),
         ];
     }

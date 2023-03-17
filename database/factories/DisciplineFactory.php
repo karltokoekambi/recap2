@@ -18,11 +18,11 @@ class DisciplineFactory extends Factory
     {
         return [
             'employe_id' => fake()->numberBetween(1, 10),
-            'remise_convocation' => fake()->date('d-m-Y'),
-            'date_convocation' => fake()->date('d-m-Y'),
+            'remise_convocation' => fake()->date('Y-m-d'),
+            'date_convocation' => fake()->date('Y-m-d'),
             'faits_reproches' => fake()->text(),
             'sanction' => fake()->word(),
-            'date_notification' => fake()->date('d-m-Y'),
+            'date_notification' => fake()->date('Y-m-d'),
         ];
     }
 }

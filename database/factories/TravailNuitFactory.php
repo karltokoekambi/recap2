@@ -18,7 +18,7 @@ class TravailNuitFactory extends Factory
     {
         return [
             'employe_id' => \App\Models\Employe::factory(),
-            'date' => $this->faker->date('d-m-Y', 'now'),
+            'date' => $this->faker->date('Y-m-d', 'now'),
             'nb_heures' => $this->faker->numberBetween(0, 100),
             'nb_nuits_penibles' => $this->faker->numberBetween(0, 100),
         ];

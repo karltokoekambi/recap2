@@ -18,10 +18,10 @@ class PrimeEvalFactory extends Factory
     {
         return [
             'employe_id' => $this->faker->numberBetween(1,10),
-            'date' => $this->faker->date('d-m-Y', 'now'),
+            'date' => $this->faker->date('Y-m-d', 'now'),
             'note' => 'A',
             'montant_prime' => $this->faker->numberBetween(1,100),
-            'date_entretien' => $this->faker->date('d-m-Y'),
+            'date_entretien' => $this->faker->date('Y-m-d'),
         ];
     }
 }
