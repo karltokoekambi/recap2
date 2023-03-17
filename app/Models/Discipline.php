@@ -9,6 +9,15 @@ class Discipline extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'employe_id',
+        'remise_convocation',
+        'date_convocation',
+        'faits_reproches',
+        'sanction',
+        'date_notification'
+    ];
+
     public function employe(){
         return $this->BelongsTo(Employe::class);
     }

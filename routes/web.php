@@ -72,6 +72,8 @@ Route::prefix('/AT')->name('at.')->group( function(){
 
 Route::prefix('/disc')->name('disc.')->group( function(){
     Route::get('/', [DisciplineController::class, 'index'])->name('index');
+    Route::get('/create', [DisciplineController::class, 'create'])->name('create');
+    Route::post('/save', [DisciplineController::class, 'save'])->name('save');
 });
 
 Route::prefix('/pro')->name('pro.')->group( function(){
