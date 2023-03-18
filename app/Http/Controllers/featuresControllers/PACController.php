@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\featuresControllers;
 
+use App\Http\Requests\StoreAbsRequest;
 use App\Http\Requests\StoreContractRequest;
 use App\Http\Requests\StoreEmployeeRequest;
 use App\Models\Employe;
@@ -44,15 +45,29 @@ class PACController extends Controller
             'numSecu_provisoire' => $data['numSec'],
         ]);
 
+        route('pac.index');
+    }
+
+    public function abscreate(){
+        return view('features.PAC.addAbs');
+    }
+
+    public function abssave(StoreAbsRequest $request){
+        var_dump('alors la il va falloir ajouter un request pour les absences mais ça va le faire peinard, de plus il faudra faire un Absence:create mais dans un foreach vu que je vais renvoyer une liste');
+        foreach($request->input('listretour') as $absence){
+            $data = $request->validated();
+            TypeAbsence::create([
+                'employe_id' => $absence['employee'],
+                'type_absence_id' => $absence['type'],
+                'date' => $absence['date'],
+                'nb_jours' => $absence['nbdays'],
+            ]);
+        }
         return view('features.PAC.index', [
             'employes' => Employe::select('nom','prenom','date_entree','date_sortie')
                 ->get(),
             'absences' => TypeAbsence::all()
         ]);
-    }
-
-    public function abscreate(){
-        return view('features.PAC.addAbs');
     }
 
     public function contractcreate(){
