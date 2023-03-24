@@ -43,6 +43,13 @@ class PACController extends Controller
             'numSecu_provisoire' => $data['numSec'],
         ]);
 
+        HeuresContrat::create([
+            'employe_id' => Employe::all()->last()->id,
+            'date_reception' => $data['indate'],
+            'date_effet' => $data['indate'],
+            'nb_heures_mois' => $data['contratinit'],
+        ]);
+
         return redirect('PAC');
     }
 
@@ -54,20 +61,20 @@ class PACController extends Controller
     }
 
     public function abssave(StoreAbsRequest $request){
-        foreach(Employe::all() as $emp){
-            $data = $request->validated();
-            $condition = $request->input('hours.'.$emp->id);
-            if(isset( $condition)){
-                echo 'ok';
-                Absence::create([
-                    'employe_id' => $request->input('employee'),
-                    'type_absence_id' => $request->input('type'),
-                    'date' => $request->input('date'),
-                    'nb_jours_absence' => $request->input('hours.'.$emp->id)
-                ]);
-            }
-        }
-        return view('features.PAC.index');
+//        foreach(Employe::all() as $emp){
+//            $data = $request->validated();
+//            $condition = $request->input('hours.'.$emp->id);
+//            if(isset( $condition)){
+//                echo 'ok';
+//                Absence::create([
+//                    'employe_id' => $request->input('employee'),
+//                    'type_absence_id' => $request->input('type'),
+//                    'date' => $request->input('date'),
+//                    'nb_jours_absence' => $request->input('hours.'.$emp->id)
+//                ]);
+//            }
+//        }
+        return redirect('PAC');
     }
 
     public function contractcreate(){
@@ -86,6 +93,6 @@ class PACController extends Controller
             'nb_heures_mois' => $data['hours'],
         ]);
 
-        return view('features.PAC.index');
+        return redirect('PAC');
     }
 }

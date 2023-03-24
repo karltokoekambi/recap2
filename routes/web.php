@@ -58,15 +58,15 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-
 //////////////
 Route::prefix('/PAC')->name('pac.')->group( function(){
     Route::get('/', [PACController::class, 'index'])->name('index')->middleware(['auth', 'verified']);
+
     Route::get('/create', [PACController::class, 'create'])->name('create')->middleware(['auth', 'verified']);
     Route::post('/save', [PACController::class, 'save'])->name('save')->middleware(['auth', 'verified']);
 
     Route::get('/abscreate', [PACController::class, 'abscreate'])->name('abscreate')->middleware(['auth', 'verified']);
-    Route::post('/abssave', [PACController::class, 'abssave'])->name('abssave')->middleware(['auth', 'verified']);
+    Route::get('/abssave', [PACController::class, 'abssave'])->name('abssave')->middleware(['auth', 'verified']);
 
     Route::get('/contractcreate', [PACController::class, 'contractcreate'])->name('contractcreate')->middleware(['auth', 'verified']);
     Route::post('/contractsave', [PACController::class, 'contractsave'])->name('contractsave')->middleware(['auth', 'verified']);

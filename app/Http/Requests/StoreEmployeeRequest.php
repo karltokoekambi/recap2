@@ -27,6 +27,7 @@ class StoreEmployeeRequest extends FormRequest
             'startvisa' => ['nullable', 'date'],
             'endvisa' => ['nullable', 'date',Rule::requiredIf(!isEmpty($this->request->get('nationality')))],
             'numSec' => ['nullable', 'integer','min_digits:10','max_digits:10',Rule::requiredIf(!isEmpty($this->request->get('nationality')))],
+            'contratinit' => ['required', 'decimal:2', 'min:0', 'max:152']
         ];
     }
 }

@@ -1,28 +1,30 @@
 <div>
-    <a href="{{route('pac.create')}}">
-        <button class="px-6 py-3 bg-blue-600 rounded-md text-white font-medium tracking-wide hover:bg-blue-500 ml-3">Ajouter un employé</button>
-    </a>
+    <div>
+        <a href="{{route('pac.create')}}">
+            <button class="px-6 py-3 bg-blue-600 rounded-md text-white font-medium tracking-wide hover:bg-blue-500 ml-3">Ajouter un employé</button>
+        </a>
 
-    <a href="{{route('pac.contractcreate')}}">
-        <button class="px-6 py-3 bg-blue-600 rounded-md text-white font-medium tracking-wide hover:bg-blue-500 ml-3">Ajouter une modification de contrat</button>
-    </a>
+        <a href="{{route('pac.contractcreate')}}">
+            <button class="px-6 py-3 bg-blue-600 rounded-md text-white font-medium tracking-wide hover:bg-blue-500 ml-3">Ajouter une modification de contrat</button>
+        </a>
 
-    <a href="{{route('pac.abscreate')}}">
-        <button class="px-6 py-3 bg-blue-600 rounded-md text-white font-medium tracking-wide hover:bg-blue-500 ml-3">Ajouter des absences</button>
-    </a>
+        <a href="{{route('pac.abscreate')}}">
+            <button class="px-6 py-3 bg-blue-600 rounded-md text-white font-medium tracking-wide hover:bg-blue-500 ml-3">Ajouter des absences</button>
+        </a>
 
-    <select class="px-6 py-3 rounded-md font-medium tracking-wide ml-3" name="year" wire:model="year">
-        @for($i = $yearScope['debut']; $i <= $yearScope['fin']; $i++)
-            <option value="{{ $i }}">{{ $i }}</option>
-        @endfor
-    </select>
+        <select class="px-6 py-3 rounded-md font-medium tracking-wide ml-3" name="year" wire:model="year">
+            @for($i = $yearScope['debut']; $i <= $yearScope['fin']; $i++)
+                <option value="{{ $i }}">{{ $i }}</option>
+            @endfor
+        </select>
 
-    <select class="px-6 py-3 rounded-md font-medium tracking-wide ml-3" name="selection" wire:model="selection">
-        <option value="0">Heures Contrat</option>
-        @foreach($absences as $abs)
-            <option value="{{ $abs->id }}">{{ $abs->libelle }}</option>
-        @endforeach
-    </select>
+        <select class="px-6 py-3 rounded-md font-medium tracking-wide ml-3" name="selection" wire:model="selection">
+            <option value="0">Heures Contrat</option>
+            @foreach($absences as $abs)
+                <option value="{{ $abs->id }}">{{ $abs->libelle }}</option>
+            @endforeach
+        </select>
+    </div>
 
     <div class="flex flex-col mt-6">
         <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
@@ -46,7 +48,11 @@
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Octobre</th>
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Novembre</th>
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Decembre</th>
-                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Total</th>
+                        @if($selection == 0)
+                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Moyenne</th>
+                        @else
+                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Total</th>
+                        @endif
                     </tr>
                     </thead>
 
@@ -74,23 +80,26 @@
                                     <div class="text-sm leading-5 text-gray-900"></div>
                                 @endif
                             </td>
-                            @for($j = 1; $j <= 12; $j++)
-                                <?php $flag = false ?>
-                                @foreach($contrats as $i => $con)
-                                    @if($emp->id == $i)
-                                        @foreach($con as $c)
-                                            @if($j<10 && str_contains($c->date, $year.'-0'.$j.'-')!== false || $j>=10 && str_contains($c->date, $year.'-'.$j.'-')!== false)
-                                                <?php $flag = true ?>
-                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">{{ $c->nb }}</td>
-                                            @endif
-                                            @endforeach
-                                        @endif
-                                @endforeach
-                                @if(!$flag)
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500"></td>
+                            @for($m = 1; $m <= 12; $m++)
+                                @if($selection == 0 && isset($contrats[$emp->id][$year]) && isset($contrats[$emp->id][$year][$m]))
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">{{ $contrats[$emp->id][$year][$m] }}</td>
+                                @else
+                                    @if(($m<10 && isset($contrats[$emp->id][0]['nb']) && str_contains($contrats[$emp->id][0]['date'], $year.'-0'.$m)) || ($m>=10 && isset($contrats[$emp->id][0]['nb']) && str_contains($contrats[$emp->id][0]['date'], $year.'-'.$m)))
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">{{ $contrats[$emp->id][0]['nb'] }}</td>
+                                    @else
+                                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500"></td>
                                     @endif
+                                @endif
                             @endfor
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500"></td>
+                            @if($selection != 0)
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">{{ $ttlabs[$emp->id][0]['total'] }}</td>
+                            @else
+                                @if(isset($contrats[$emp->id][$year]['moyenne']))
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">{{ $contrats[$emp->id][$year]['moyenne'] }}</td>
+                                @else
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500"></td>
+                                @endif
+                            @endif
                         </tr>
                     @endforeach
                     </tbody>

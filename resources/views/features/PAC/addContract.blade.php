@@ -40,8 +40,8 @@
                 </div>
 
                 <div>
-                    <label class="text-gray-700" for="hours">Nombre d'heures par mois <br>( préciser les décimales même si chiffre rond, exemple : XX.XX )</label>
-                    <input class="form-input w-full mt-2 rounded-md focus:border-indigo-600" type="number" step="any" name="hours">
+                    <label class="text-gray-700" for="hours">Nombre d'heures par mois</label>
+                    <input class="form-input w-full mt-2 rounded-md focus:border-indigo-600" type="number" step="any" name="hours" placeholder="XX.XX">
                 </div>
 
             </div>

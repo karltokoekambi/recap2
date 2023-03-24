@@ -52,6 +52,13 @@
                 </div>
 
                 <div>
+                    <label class="text-gray-700" for="contratinit">Heures mensuelles</label>
+                    <input class="form-input w-full mt-2 rounded-md focus:border-indigo-600" type="number" step="any" name="contratinit" placeholder="XX.XX">
+                </div>
+
+                <div></div>
+
+                <div>
                     <label class="text-gray-700" for="rqth">Date de fin RQTH ( optionnel )</label>
                     <input class="form-input w-full mt-2 rounded-md focus:border-indigo-600" type="date" name="rqth">
                 </div>
