@@ -1,9 +1,10 @@
 @extends('dashboard.layouts.master')
 
 @section('body')
-    Il faut penser à mettre les cases en fond rouge lorsque la date est depasee
-        <h2 class="text-center">ENTRETIENS PRO</h2>
-        <button>ajouter un entretien</button>
+    Il faut penser à mettre les cases en fond rouge lorsque la date est depasée
+    <a href="">
+        <button class="px-6 py-3 bg-blue-600 rounded-md text-white font-medium tracking-wide hover:bg-blue-500 ml-3">Ajouter un entretien</button>
+    </a>
         <div class="flex flex-col mt-6">
             <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
                 <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
