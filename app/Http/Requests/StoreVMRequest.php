@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreAbsRequest extends FormRequest
+class StoreVMRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -14,8 +14,9 @@ class StoreAbsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'type' => ['required', 'integer'],
-            'date' => ['required', 'date'],
+            'employee' => ['required', 'int'],
+            'datevm' => ['required', 'date'],
+            'commentary' => ['required', 'string']
         ];
     }
 }

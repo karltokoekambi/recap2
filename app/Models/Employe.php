@@ -38,6 +38,22 @@ class Employe extends Model
         'restaurant_id',
     ];
 
+    protected $casts = [
+        'date_naissance' => 'date',
+        'date_entree' => 'date',
+        'date_sortie' => 'date',
+        'date_fin_rqth' => 'date',
+        'debut_validite' => 'date',
+        'fin_validite' => 'date',
+        'date_demande' => 'date',
+        'prochaine_VM' => 'date',
+        'visite_medicale_entree' => 'date',
+        'date_don_carte_commerçant' => 'date',
+        'date_don_carte_McBooster' => 'date',
+        'fin_abonnement_TAN' => 'date',
+        'debut_abonnement_TAN' => 'date'
+    ];
+
     public function poste(){
         return $this->belongsTo(Poste::class);
     }

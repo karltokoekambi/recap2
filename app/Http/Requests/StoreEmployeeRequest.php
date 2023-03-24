@@ -21,6 +21,7 @@ class StoreEmployeeRequest extends FormRequest
             'birthdate' => ['required', 'date'],
             'indate' => ['required', 'date'],
             'poste' => ['required', 'integer'],
+            'vmvisitin' => ['required', 'date'],
             'rqth' => ['nullable', 'date'],
             'nationality' => ['nullable','string', 'min:1', 'max:120'],
             'startvisa' => ['nullable', 'date'],

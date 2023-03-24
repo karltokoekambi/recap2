@@ -1,6 +1,10 @@
 @extends('dashboard.layouts.master')
 
 @section('body')
+    <a href="{{route('vm.create')}}">
+        <button class="px-6 py-3 bg-blue-600 rounded-md text-white font-medium tracking-wide hover:bg-blue-500 ml-3">Ajouter une visite médicale</button>
+    </a>
+
         <div class="flex flex-col mt-6">
             <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
                 <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
@@ -31,17 +35,22 @@
                                     <div class="text-sm leading-5 text-gray-900">{{ $employe->prenom }}</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="text-sm leading-5 text-gray-900">{{ $employe->date_entree }}</div>
+                                    <div class="text-sm leading-5 text-gray-900">{{ $employe->date_entree->format('d-m-Y') }}</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="text-sm leading-5 text-gray-900">{{ $employe->visite_medicale_entree }}</div>
+                                    @if($employe->visite_medicale_entree)
+                                        <div class="text-sm leading-5 text-gray-900">{{ $employe->visite_medicale_entree->format('d-m-Y') }}</div>
+                                    @else
+                                        <div class="text-sm leading-5 text-gray-900"></div>
+                                    @endif
+
                                 </td>
                                 <?php $i = 0; ?>
                                 @foreach($visites as $visite)
                                     @if($visite->employe_id == $employe->id)
                                         <?php $i++; ?>
                                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                            <div class="text-sm leading-5 text-gray-900">{{ $visite->date_visite }}</div>
+                                            <div class="text-sm leading-5 text-gray-900">{{ $visite->date_visite->format('d-m-Y') }}</div>
                                         </td>
                                     @endif
                                 @endforeach
@@ -49,13 +58,21 @@
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"></td>
                                 @endfor
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="text-sm leading-5 text-gray-900">{{ $employe->prochaine_VM }}</div>
+                                    @if($employe->prohaine_VM)
+                                        <div class="text-sm leading-5 text-gray-900">{{ $employe->prochaine_VM->format('d-m-Y') }}</div>
+                                    @else
+                                        <div class="text-sm leading-5 text-gray-900"></div>
+                                    @endif
                                 </td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                     <div class="text-sm leading-5 text-gray-900">{{ $employe->observations }}</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    <div class="text-sm leading-5 text-gray-900">{{ $employe->date_demande }}</div>
+                                    @if($employe->date_demande)
+                                        <div class="text-sm leading-5 text-gray-900">{{ $employe->date_demande->format('d-m-Y') }}</div>
+                                    @else
+                                        <div class="text-sm leading-5 text-gray-900"></div>
+                                    @endif
                                 </td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
 {{--                                    <div class="text-sm leading-5 text-gray-900">--}}

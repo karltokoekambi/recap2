@@ -7,12 +7,9 @@
         <button class="px-6 py-3 bg-blue-600 rounded-md text-white font-medium tracking-wide hover:bg-blue-500 ml-3">Ajouter une modification de contrat</button>
     </a>
 
-    <select class="px-6 py-3 bg-blue-600 rounded-md text-white font-medium tracking-wide hover:bg-blue-500 ml-3" name="abs">
-        <option>Ajouter des absences</option>
-        @foreach($absences as $abs)
-            <option value="{{ $abs->id }}">{{ $abs->libelle }}</option>
-        @endforeach
-    </select>
+    <a href="{{route('pac.abscreate')}}">
+        <button class="px-6 py-3 bg-blue-600 rounded-md text-white font-medium tracking-wide hover:bg-blue-500 ml-3">Ajouter des absences</button>
+    </a>
 
     <select class="px-6 py-3 rounded-md font-medium tracking-wide ml-3" name="year" wire:model="year">
         @for($i = $yearScope['debut']; $i <= $yearScope['fin']; $i++)
@@ -49,7 +46,7 @@
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Octobre</th>
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Novembre</th>
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Decembre</th>
-                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"></th>
+                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Total</th>
                     </tr>
                     </thead>
 
@@ -67,11 +64,15 @@
                             </td>
 
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="text-sm leading-5 text-gray-900">{{ $emp->date_entree }}</div>
+                                <div class="text-sm leading-5 text-gray-900">{{ $emp->date_entree->format('d-m-Y') }}</div>
                             </td>
 
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="text-sm leading-5 text-gray-900">{{ $emp->date_sortie }}</div>
+                                @if($emp->date_sortie)
+                                    <div class="text-sm leading-5 text-gray-900">{{ $emp->date_sortie->format('d-m-Y') }}</div>
+                                @else
+                                    <div class="text-sm leading-5 text-gray-900"></div>
+                                @endif
                             </td>
                             @for($j = 1; $j <= 12; $j++)
                                 <?php $flag = false ?>

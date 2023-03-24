@@ -47,10 +47,14 @@
                 </div>
 
                 <div>
-                    <label class="text-gray-700" for="rqth">Date de fin RQTH</label>
-                    <input class="form-input w-full mt-2 rounded-md focus:border-indigo-600" type="date" name="rqth">
+                    <label class="text-gray-700" for="vmvisitin">Date de visite médicale d'entrée</label>
+                    <input class="form-input w-full mt-2 rounded-md focus:border-indigo-600" type="date" name="vmvisitin">
                 </div>
 
+                <div>
+                    <label class="text-gray-700" for="rqth">Date de fin RQTH ( optionnel )</label>
+                    <input class="form-input w-full mt-2 rounded-md focus:border-indigo-600" type="date" name="rqth">
+                </div>
             </div>
             <br>
 

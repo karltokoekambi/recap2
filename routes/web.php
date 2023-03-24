@@ -61,59 +61,63 @@ require __DIR__.'/auth.php';
 
 //////////////
 Route::prefix('/PAC')->name('pac.')->group( function(){
-    Route::get('/', [PACController::class, 'index'])->name('index');
-    Route::get('/create', [PACController::class, 'create'])->name('create');
-    Route::post('/save', [PACController::class, 'save'])->name('save');
+    Route::get('/', [PACController::class, 'index'])->name('index')->middleware(['auth', 'verified']);
+    Route::get('/create', [PACController::class, 'create'])->name('create')->middleware(['auth', 'verified']);
+    Route::post('/save', [PACController::class, 'save'])->name('save')->middleware(['auth', 'verified']);
 
-    Route::get('/abscreate', [PACController::class, 'abscreate'])->name('abscreate');
-    Route::post('/abssave', [PACController::class, 'abssave'])->name('abssave');
+    Route::get('/abscreate', [PACController::class, 'abscreate'])->name('abscreate')->middleware(['auth', 'verified']);
+    Route::post('/abssave', [PACController::class, 'abssave'])->name('abssave')->middleware(['auth', 'verified']);
 
-    Route::get('/contractcreate', [PACController::class, 'contractcreate'])->name('contractcreate');
-    Route::post('/contractsave', [PACController::class, 'contractsave'])->name('contractsave');
+    Route::get('/contractcreate', [PACController::class, 'contractcreate'])->name('contractcreate')->middleware(['auth', 'verified']);
+    Route::post('/contractsave', [PACController::class, 'contractsave'])->name('contractsave')->middleware(['auth', 'verified']);
 });
 
 Route::prefix('/AT')->name('at.')->group( function(){
-    Route::get('/', [ATController::class, 'index'])->name('index');
+    Route::get('/', [ATController::class, 'index'])->name('index')->middleware(['auth', 'verified']);
+    Route::get('/create', [ATController::class, 'create'])->name('create')->middleware(['auth', 'verified']);
+    Route::post('/save', [ATController::class, 'save'])->name('save')->middleware(['auth', 'verified']);
 });
 
 Route::prefix('/disc')->name('disc.')->group( function(){
-    Route::get('/', [DisciplineController::class, 'index'])->name('index');
-    Route::get('/create', [DisciplineController::class, 'create'])->name('create');
-    Route::post('/save', [DisciplineController::class, 'save'])->name('save');
+    Route::get('/', [DisciplineController::class, 'index'])->name('index')->middleware(['auth', 'verified']);
+    Route::get('/create', [DisciplineController::class, 'create'])->name('create')->middleware(['auth', 'verified']);
+    Route::post('/save', [DisciplineController::class, 'save'])->name('save')->middleware(['auth', 'verified']);
 });
 
 Route::prefix('/pro')->name('pro.')->group( function(){
-    Route::get('/', [EntretiensController::class, 'index'])->name('index');
+    Route::get('/', [EntretiensController::class, 'index'])->name('index')->middleware(['auth', 'verified']);
 });
 
 Route::prefix('/etr')->name('etr.')->group( function(){
-    Route::get('/', [EtrangerController::class, 'index'])->name('index');
+    Route::get('/', [EtrangerController::class, 'index'])->name('index')->middleware(['auth', 'verified']);
 });
 
 Route::prefix('/js')->name('js.')->group( function(){
     Route::get('/', function () {
         return view('features.JourneeSolid.JourneeSolid');
-    })->name('index');
+    })->name('index')->middleware(['auth', 'verified']);
 });
 
 Route::prefix('/mut')->name('mut.')->group( function(){
-    Route::get('/', [MutuelleController::class, 'index'])->name('index');
+    Route::get('/', [MutuelleController::class, 'index'])->name('index')->middleware(['auth', 'verified']);
 });
 
 Route::prefix('/tan')->name('tan.')->group( function(){
-    Route::get('/', [TANController::class, 'index'])->name('index');
+    Route::get('/', [TANController::class, 'index'])->name('index')->middleware(['auth', 'verified']);
 });
 
 Route::prefix('/tn')->name('tn.')->group( function(){
-    Route::get('/', [TravailNuitController::class, 'index'])->name('index');
+    Route::get('/', [TravailNuitController::class, 'index'])->name('index')->middleware(['auth', 'verified']);
 });
 
 Route::prefix('/vm')->name('vm.')->group( function(){
-    Route::get('/', [VMController::class, 'index'])->name('index');
+    Route::get('/', [VMController::class, 'index'])->name('index')->middleware(['auth', 'verified']);
+    Route::get('/create', [VMController::class, 'create'])->name('create')->middleware(['auth', 'verified']);
+    Route::post('/save', [VMController::class, 'save'])->name('save')->middleware(['auth', 'verified']);
 });
 
 Route::prefix('/pe')->name('pe.')->group( function(){
     Route::get('/', function () {
         return view('features.PrimeEval.PrimeEval');
-    })->name('index');
+    })->name('index')->middleware(['auth', 'verified']);
 });

@@ -19,6 +19,11 @@ class HeuresContrat extends Model
         'nb_heures_mois',
     ];
 
+    protected $casts = [
+        'date_reception' => 'date',
+        'date_effet' => 'date'
+    ];
+
     public function employe(){
         return $this->belongsTo(Employe::class);
     }

@@ -22,8 +22,8 @@ return new class extends Migration
             $table->boolean('lieu');//0: trajet, 1: travail
             $table->longText('commentaire');
             $table->longText('lesions');
-            $table->date('date_debut_arret');
-            $table->date('date_fin_arret');
+            $table->date('date_debut_arret')->nullable();
+            $table->date('date_fin_arret')->nullable();
             $table->boolean('prise_en_charge_CPAM')->default(false);
             $table->timestamps();
         });
