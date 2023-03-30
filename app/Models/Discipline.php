@@ -18,6 +18,11 @@ class Discipline extends Model
         'date_notification'
     ];
 
+    protected $casts = [
+        'date_convocation' => 'date',
+        'date_notification' => 'date'
+    ];
+
     public function employe(){
         return $this->BelongsTo(Employe::class);
     }

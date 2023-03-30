@@ -5,13 +5,15 @@ namespace App\Http\Controllers\featuresControllers;
 use App\Http\Controllers\Controller;
 use App\Models\Employe;
 use App\Models\Entretien;
+use DateTime;
 
 class EntretiensController extends Controller
 {
     public function index(){
 
         $entretiens = Entretien::orderBy('dateEntretien')->get();
-        $employes = Employe::addSelect(['prochainedateEntretien' => Entretien::select('dateEntretien')->whereColumn('employe_id', 'employes.id')->where('bilan', '=', 0)->orderBy('dateEntretien', 'desc')->limit(1)])
+        $employes = Employe::select('id', 'nom', 'prenom', 'date_entree')
+            ->addSelect(['prochainedateEntretien' => Entretien::select('dateEntretien')->whereColumn('employe_id', 'employes.id')->where('bilan', '=', 0)->orderBy('dateEntretien', 'desc')->limit(1)])
             ->addSelect(['prochainedateBilan' => Entretien::select('dateEntretien')->whereColumn('employe_id', 'employes.id')->where('bilan', '=', 1)->orderBy('dateEntretien', 'desc')->limit(1)])
             ->get();
 
@@ -27,6 +29,17 @@ class EntretiensController extends Controller
                 $employe->prochainedateBilan = date('d-m-Y', strtotime($employe->date_entree. ' + 6 year'));
             }else{
                 $employe->prochainedateBilan = date('d-m-Y', strtotime($employe->prochainedateBilan. ' + 6 year'));
+            }
+            $currentDate = DateTime::createFromFormat('d-m-Y',date('d-m-Y'));
+            if(DateTime::createFromFormat('d-m-Y',$employe->prochainedateEntretien) > $currentDate){
+                $employe->statusEntretien = true;
+            }else{
+                $employe->statusEntretien = false;
+            }
+            if(DateTime::createFromFormat('d-m-Y',$employe->prochainedateBilan) > $currentDate){
+                $employe->statusBilan = true;
+            }else{
+                $employe->statusBilan = false;
             }
 
         }
@@ -53,7 +66,7 @@ class EntretiensController extends Controller
 
         }
 
-        //dd($employes, $entretiens);
+        //dd($employes);
 
         return view('features.Entretiens.Entretiens',[
             'entretiens' => $entretiens,

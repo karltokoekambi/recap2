@@ -35,29 +35,37 @@
                             <tr>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $employe->nom }}</td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $employe->prenom }}</td>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $employe->date_entree }}</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $employe->date_entree->format('d-m-Y') }}</td>
                                 <?php $i = 0; ?>
                                 @foreach($entretiens as $entretien)
                                     @if($entretien->employe_id == $employe->id && !$entretien->bilan)
                                         <?php $i++; ?>
-                                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $entretien->dateEntretien }}</td>
+                                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $entretien->dateEntretien->format('d-m-Y') }}</td>
                                     @endif
                                 @endforeach
                                 @for($u = $i; $u < $countEntretien; $u++)
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"></td>
                                 @endfor
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $employe->prochainedateEntretien }}</td>
+                                @if(!$employe->statusEntretien)
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 bg-red-400">{{ $employe->prochainedateEntretien }}</td>
+                                @else
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $employe->prochainedateEntretien }}</td>
+                                @endif
                                 <?php $i = 0; ?>
                                 @foreach($entretiens as $entretien)
                                     @if($entretien->employe_id == $employe->id && $entretien->bilan)
                                         <?php $i++; ?>
-                                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $entretien->dateEntretien }}</td>
+                                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $entretien->dateEntretien->format('d-m-Y') }}</td>
                                     @endif
                                 @endforeach
                                 @for($u = $i; $u < $countBilan; $u++)
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"></td>
                                 @endfor
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $employe->prochainedateBilan }}</td>
+                                @if(!$employe->statusBilan)
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 bg-red-400">{{ $employe->prochainedateBilan }}</td>
+                                @else
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $employe->prochainedateBilan }}</td>
+                                @endif
                             </tr>
                         @endforeach
                         </tbody>

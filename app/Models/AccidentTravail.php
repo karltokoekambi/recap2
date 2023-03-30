@@ -21,6 +21,13 @@ class AccidentTravail extends Model
         'prise_en_charge_CPAM'
     ];
 
+    protected $casts = [
+        'date_accident' => 'date',
+        'date_declaration' => 'date',
+        'date_debut_arret' => 'date',
+        'date_fin_arret' => 'date'
+    ];
+
     public function employe(){
         return $this->belongsTo(Employe::class);
     }

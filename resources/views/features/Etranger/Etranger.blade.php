@@ -31,26 +31,28 @@
                     </tr>
                     </thead>
                     <tbody class="bg-white">
-                    @foreach($etrangers as $i => $etranger)
-                        <tr>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $etranger->nom }}</td>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $etranger->prenom }}</td>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $etranger->nationalite }}</td>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $etranger->debut_validite }}</td>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $etranger->fin_validite }}</td>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">964h/an</td>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">ttl avec reprise comprise</td>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">reprise à calculer ça va être chaud</td>
-                            @for($i = 1; $i <= 12; $i++)
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    @foreach($heuresEtrangers as $heureEtranger )
-                                        @if($heureEtranger->mois == $i && $heureEtranger->employe_id == $etranger->id && $heureEtranger->annee == 2023)
-                                            {{ $heureEtranger->nb_heures_effectuees }}
-                                        @endif
-                                    @endforeach
-                                </td>
-                            @endfor
-                        </tr>
+                    @foreach($equipiers as $i => $etranger)
+                        @if(isset($etranger->nationalite))
+                            <tr>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $etranger->nom }}</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $etranger->prenom }}</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $etranger->nationalite }}</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $etranger->debut_validite->format('d-m-Y') }}</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $etranger->fin_validite->format('d-m-Y') }}</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">964h/an</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">ttl avec reprise comprise</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">reprise à calculer ça va être chaud</td>
+                                @for($i = 1; $i <= 12; $i++)
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                        @foreach($heuresEtrangers as $heureEtranger )
+                                            @if($heureEtranger->mois == $i && $heureEtranger->employe_id == $etranger->id && $heureEtranger->annee == 2023)
+                                                {{ $heureEtranger->nb_heures_effectuees }}
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                @endfor
+                            </tr>
+                        @endif
                     @endforeach
                     </tbody>
                 </table>
@@ -72,20 +74,22 @@
                     </tr>
                     </thead>
                     <tbody class="bg-white">
-                    @foreach($mineurs as $mineur)
-                        <tr>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $mineur->nom }}</td>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $mineur->prenom }}</td>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $mineur->date_naissance }}</td>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $mineur->date_entree }}</td>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                @php
-                                    $date = new DateTime($mineur->date_naissance);
-                                    $date->add(new DateInterval('P18Y'));
-                                    echo $date->format('d-m-Y');
-                                @endphp
-                            </td>
-                        </tr>
+                    @foreach($equipiers as $mineur)
+                        @if($mineur->date_naissance->diffInYears(Carbon\Carbon::now()) < 18)
+                            <tr>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $mineur->nom }}</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $mineur->prenom }}</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $mineur->date_naissance->format('d-m-Y') }}</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $mineur->date_entree->format('d-m-Y') }}</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                    @php
+                                        $date = new DateTime($mineur->date_naissance);
+                                        $date->add(new DateInterval('P18Y'));
+                                        echo $date->format('d-m-Y');
+                                    @endphp
+                                </td>
+                            </tr>
+                        @endif
                     @endforeach
                     </tbody>
                 </table>
@@ -105,12 +109,14 @@
                     </tr>
                     </thead>
                     <tbody class="bg-white">
-                    @foreach($rqths as $rqth)
-                        <tr>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $rqth->nom }}</td>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $rqth->prenom }}</td>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $rqth->date_fin_RQTH }}</td>
-                        </tr>
+                    @foreach($equipiers as $rqth)
+                        @if(isset($rqth->date_fin_RQTH))
+                            <tr>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $rqth->nom }}</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $rqth->prenom }}</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $rqth->date_fin_RQTH->format('d-m-Y') }}</td>
+                            </tr>
+                        @endif
                     @endforeach
                     </tbody>
                 </table>

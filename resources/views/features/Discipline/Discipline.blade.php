@@ -26,10 +26,10 @@
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $disc->employe_nom }}</td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $disc->employe_prenom }}</td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $disc->remise_convocation }}</td>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $disc->date_convocation }}</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $disc->date_convocation->format('d-m-Y') }}</td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $disc->faits_reproches }}</td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $disc->sanction }}</td>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $disc->date_notification }}</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $disc->date_notification->format('d-m-Y') }}</td>
                             </tr>
                         @endforeach
                         </tbody>

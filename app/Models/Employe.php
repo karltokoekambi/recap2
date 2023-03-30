@@ -42,7 +42,7 @@ class Employe extends Model
         'date_naissance' => 'date',
         'date_entree' => 'date',
         'date_sortie' => 'date',
-        'date_fin_rqth' => 'date',
+        'date_fin_RQTH' => 'date',
         'debut_validite' => 'date',
         'fin_validite' => 'date',
         'date_demande' => 'date',

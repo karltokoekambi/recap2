@@ -10,18 +10,17 @@ use Carbon\Carbon;
 class EtrangerController extends Controller
 {
     public function index(){
-        $etrangers = Employe::where('nationalite', '!=', NULL)->get();
+        $equipiers = Employe::where('nationalite', '!=', NULL)
+            ->orWhere('date_naissance', '>', Carbon::now()->subYears(18))
+            ->orWhere('date_fin_rqth', '!=', NULL)
+            ->get();
         $heuresEtrangers = HeuresEffectuees::join('employes', 'employes.id', '=', 'heures_effectuees.employe_id')
             ->where('employes.nationalite', '!=', NULL)
             ->get();
-        $mineurs = Employe::where('date_naissance', '>', Carbon::now()->subYears(18))->get();
-        $rqths = Employe::where('date_fin_rqth', '!=', NULL)->get();
 
         return view('features.Etranger.Etranger', [
-            'etrangers' => $etrangers ,
-            'heuresEtrangers' => $heuresEtrangers,
-            'mineurs'   => $mineurs,
-            'rqths'     => $rqths
+            'equipiers' => $equipiers ,
+            'heuresEtrangers' => $heuresEtrangers
         ]);
     }
 }

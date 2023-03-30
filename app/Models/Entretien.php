@@ -9,6 +9,10 @@ class Entretien extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'dateEntretien' => 'date',
+    ];
+
     public function employe(){
         return $this->belongsTo(Employe::class);
     }

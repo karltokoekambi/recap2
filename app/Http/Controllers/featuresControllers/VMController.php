@@ -26,7 +26,6 @@ class VMController extends Controller
             }
 
         }
-        //dd($visites);
 
         return view('features.VM.VisiteMedic', [
             'visites' => $visites,

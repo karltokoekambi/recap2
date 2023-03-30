@@ -29,13 +29,21 @@
                             <tr>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $arret->employe_nom }}</td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $arret->employe_prenom }}</td>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $arret->date_accident }}</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $arret->date_accident->format('d-m-Y') }}</td>
                                 @if($arret->lieu == 0)
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">X</td>
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                                        </svg>
+                                    </td>
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"></td>
                                 @else
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"></td>
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">X</td>
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                                        </svg>
+                                    </td>
                                 @endif
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $arret->commentaire }}</td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $arret->lesions }}</td>
@@ -48,7 +56,11 @@
                                     @endphp
                                 </td>
                                 @if($arret->prise_en_charge_CPAM)
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">OUI</td>
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                                        </svg>
+                                    </td>
                                 @else
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"></td>
                                 @endif

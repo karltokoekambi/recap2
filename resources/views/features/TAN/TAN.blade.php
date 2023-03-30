@@ -24,14 +24,14 @@
                                 <tr>
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $data->nom }}</td>
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $data->prenom }}</td>
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $data->date_entree }}</td>
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $data->date_entree->format('d-m-Y') }}</td>
                                     @if($data->abonnement_TAN==1)
                                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">mensuel</td>
                                     @else
                                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">annuel</td>
                                     @endif
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $data->debut_abonnement_TAN }}</td>
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $data->fin_abonnement_TAN }}</td>
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $data->debut_abonnement_TAN->format('d-m-Y') }}</td>
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $data->fin_abonnement_TAN->format('d-m-Y') }}</td>
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $data->montant_abonnement_mensuel_TAN }} €</td>
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $data->montant_abonnement_mensuel_TAN/2 }} €</td>
                                 </tr>
@@ -61,11 +61,15 @@
                                 <tr>
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $data->nom }}</td>
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $data->prenom }}</td>
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $data->date_don_carte_McBooster }}</td>
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $data->date_don_carte_McBooster->format('d-m-Y') }}</td>
                                     @if($data->papier_McBooster_signe)
-                                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">oui</td>
+                                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                                            </svg>
+                                        </td>
                                     @else
-                                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">non</td>
+                                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"></td>
                                     @endif
                                 </tr>
                             @endif
@@ -94,8 +98,8 @@
                                 <tr>
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $data->nom }}</td>
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $data->prenom }}</td>
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $data->date_entree }}</td>
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $data->date_don_carte_commerçant }}</td>
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $data->date_entree->format('d-m-Y') }}</td>
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $data->date_don_carte_commerçant->format('d-m-Y') }}</td>
                                 </tr>
                             @endif
 
