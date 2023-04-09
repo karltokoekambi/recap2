@@ -86,12 +86,25 @@ class PACController extends Controller
     public function contractsave(StoreContractRequest $request){
         $data = $request->validated();
 
-        HeuresContrat::create([
-            'employe_id' => $data['employee'],
-            'date_reception' => $data['reception'],
-            'date_effet' => $data['effect'],
-            'nb_heures_mois' => $data['hours'],
-        ]);
+        $date = date('Y-m',strtotime($data['effect']));
+
+        $user = HeuresContrat::where('employe_id', $data['employee'])
+            ->where('date_effet', 'LIKE', $date.'%')
+            ->first();
+
+        if(isset($user)){
+            $user->update([
+                'date_reception' => $data['reception'],
+                'nb_heures_mois' => $data['hours'],
+            ]);
+        }else{
+            HeuresContrat::create([
+                'employe_id' => $data['employee'],
+                'date_reception' => $data['reception'],
+                'date_effet' => $data['effect'],
+                'nb_heures_mois' => $data['hours'],
+            ]);
+        }
 
         return redirect('PAC');
     }

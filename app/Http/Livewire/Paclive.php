@@ -2,10 +2,12 @@
 
 namespace App\Http\Livewire;
 
+use App\Mail\PACmail;
 use App\Models\Absence;
 use App\Models\Employe;
 use App\Models\HeuresContrat;
 use App\Models\TypeAbsence;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 
@@ -62,7 +64,8 @@ class Paclive extends Component
                     for($y = $startYear;$y<=$yearlimit; $y++){
                         $cumul = 0;
                         for($m = $startMonth;$m<=12; $m++){
-                            if(!isset($e->date_sortie) || $e->date_sortie >= date_create($y.'-'.$m.'-31')){
+
+                            if((!isset($e->date_sortie) || $e->date_sortie >= date_create($y.'-'.$m.'-31')) && ($y < $yearlimit || $m <= intval(date('m')))){
                                 $flag = false;
                                 foreach($contratsPerso[$e->id] as $c){
                                     if($m<10){

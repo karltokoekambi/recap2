@@ -1,8 +1,7 @@
 @extends('dashboard.layouts.master')
 
 @section('body')
-    Il faut penser à mettre les cases en fond rouge lorsque la date est depasée
-    <a href="">
+    <a href="{{route('pro.create')}}">
         <button class="px-6 py-3 bg-blue-600 rounded-md text-white font-medium tracking-wide hover:bg-blue-500 ml-3">Ajouter un entretien</button>
     </a>
         <div class="flex flex-col mt-6">
@@ -46,11 +45,11 @@
                                 @for($u = $i; $u < $countEntretien; $u++)
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"></td>
                                 @endfor
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200
                                 @if(!$employe->statusEntretien)
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 bg-red-400">{{ $employe->prochainedateEntretien }}</td>
-                                @else
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $employe->prochainedateEntretien }}</td>
+                                    bg-red-400
                                 @endif
+                                ">{{ $employe->prochainedateEntretien }}</td>
                                 <?php $i = 0; ?>
                                 @foreach($entretiens as $entretien)
                                     @if($entretien->employe_id == $employe->id && $entretien->bilan)
@@ -61,11 +60,11 @@
                                 @for($u = $i; $u < $countBilan; $u++)
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"></td>
                                 @endfor
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200
                                 @if(!$employe->statusBilan)
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 bg-red-400">{{ $employe->prochainedateBilan }}</td>
-                                @else
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $employe->prochainedateBilan }}</td>
+                                    bg-red-400
                                 @endif
+                                ">{{ $employe->prochainedateBilan }}</td>
                             </tr>
                         @endforeach
                         </tbody>

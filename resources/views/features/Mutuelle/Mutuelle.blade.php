@@ -25,7 +25,7 @@
                             <tr>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $mutu->nom }}</td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $mutu->prenom }}</td>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $mutu->date_entree }}</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $mutu->date_entree->format('d-m-Y') }}</td>
                                 <?php $flag = false; ?>
                             @foreach($listeRegimes as $regime)
                                 @if($regime->employe_id == $mutu->id)

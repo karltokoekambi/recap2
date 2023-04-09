@@ -47,9 +47,9 @@
                                 @endif
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $arret->commentaire }}</td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $arret->lesions }}</td>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $arret->date_declaration }}</td>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $arret->date_debut_arret }}</td>
-                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $arret->date_fin_arret }}</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $arret->date_declaration->format('d-m-Y') }}</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $arret->date_debut_arret->format('d-m-Y') }}</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $arret->date_fin_arret->format('d-m-Y') }}</td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                     @php
                                         echo abs(round((strtotime($arret->date_fin_arret) - strtotime($arret->date_debut_arret)) / 86400));

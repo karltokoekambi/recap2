@@ -58,6 +58,7 @@
 
                     <tbody class="bg-white">
                     @foreach($employes as $emp)
+                        @if(($emp->date_sortie == null || $emp->date_sortie->format('Y') >= $year) && $emp->date_entree->format('Y') <= $year)
                         <tr>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                 <div class="ml-4">
@@ -101,6 +102,7 @@
                                 @endif
                             @endif
                         </tr>
+                        @endif
                     @endforeach
                     </tbody>
                 </table>

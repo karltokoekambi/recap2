@@ -75,4 +75,8 @@ class EntretiensController extends Controller
             'countEntretien' => $countEntretien
         ]);
     }
+
+    public function create(){
+
+    }
 }

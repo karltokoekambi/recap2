@@ -86,6 +86,7 @@ Route::prefix('/disc')->name('disc.')->group( function(){
 
 Route::prefix('/pro')->name('pro.')->group( function(){
     Route::get('/', [EntretiensController::class, 'index'])->name('index')->middleware(['auth', 'verified']);
+    Route::get('/create', [EntretiensController::class, 'create'])->name('create')->middleware(['auth', 'verified']);
 });
 
 Route::prefix('/etr')->name('etr.')->group( function(){
