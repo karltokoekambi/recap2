@@ -24,6 +24,10 @@
                 <option value="{{ $abs->id }}">{{ $abs->libelle }}</option>
             @endforeach
         </select>
+
+        <a href="{{route('pac.primegen')}}">
+            <button class="px-6 py-3 bg-blue-600 rounded-md text-white font-medium tracking-wide hover:bg-blue-500 ml-3">Génerer les primes annuelles</button>
+        </a>
     </div>
 
     <div class="flex flex-col mt-6">

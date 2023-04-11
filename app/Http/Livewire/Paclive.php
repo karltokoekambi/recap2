@@ -7,6 +7,7 @@ use App\Models\Absence;
 use App\Models\Employe;
 use App\Models\HeuresContrat;
 use App\Models\TypeAbsence;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
@@ -20,7 +21,7 @@ class Paclive extends Component
     protected $queryString = [
         'year' => ['except' => 0],
         'selection' => ['except' => 0]
-];
+    ];
 
     public function render(){
 
@@ -137,5 +138,33 @@ class Paclive extends Component
             $return[$emp->id] = $this->getAbsencesByYear($emp->id, $this->selection, $this->year);
         }
         return $return;
+    }
+
+    //1an <= durée < 3ans
+    public float $lowerPrime = 178.5;
+    //3an <= durée < 5ans
+    public float $mediumLowPrime = 242;
+    //5an <= durée < 10ans
+    public float $mediumHighPrime = 326.7;
+    //10an <= durée
+    public float $upperPrime = 447.7;
+
+    public function primeGen(){
+        $return = [];
+        dd($this->year);
+        $testdata = Absence::whereyear('date', $this->year)
+            ->where('type_absence_id','!=', 4)
+            ->get();
+        dd($testdata);
+        $employees = Employe::select('id','nom','prenom','date_entree','date_sortie')->get();
+        $absences = Absence::all();
+        $datas = $this->scopping($employees);
+        foreach($datas as $d => $data){
+            foreach($absences as $abs){
+
+            }
+        }
+        dd($data);
+        Mail::to(Auth::email())->send(new PACmail($return));
     }
 }

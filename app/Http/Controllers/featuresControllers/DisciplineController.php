@@ -47,4 +47,12 @@ class DisciplineController extends Controller
             'discipline' => $discipline
         ]);
     }
+
+    public function edit($id){
+        $discipline = Discipline::find($id);
+        return view('features.Discipline.editDisc', [
+            'discipline' => $discipline,
+            'employes' => Employe::all()
+        ]);
+    }
 }

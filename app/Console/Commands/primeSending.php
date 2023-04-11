@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Mail\PACmail;
+use App\Models\Absence;
 use App\Models\Employe;
 use App\Models\TypeAbsence;
 use Illuminate\Console\Command;

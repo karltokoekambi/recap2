@@ -13,6 +13,7 @@ use App\Http\Controllers\featuresControllers\TANController;
 use App\Http\Controllers\featuresControllers\TravailNuitController;
 use App\Http\Controllers\featuresControllers\VMController;
 use Illuminate\Support\Facades\Route;
+use App\Http\livewire\Paclive;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,6 +71,8 @@ Route::prefix('/PAC')->name('pac.')->group( function(){
 
     Route::get('/contractcreate', [PACController::class, 'contractcreate'])->name('contractcreate')->middleware(['auth', 'verified']);
     Route::post('/contractsave', [PACController::class, 'contractsave'])->name('contractsave')->middleware(['auth', 'verified']);
+
+    Route::get('/primegen', [Paclive::class, 'primeGen'])->name('primegen')->middleware(['auth', 'verified']);
 });
 
 Route::prefix('/AT')->name('at.')->group( function(){
@@ -82,6 +85,7 @@ Route::prefix('/disc')->name('disc.')->group( function(){
     Route::get('/', [DisciplineController::class, 'index'])->name('index')->middleware(['auth', 'verified']);
     Route::get('/create', [DisciplineController::class, 'create'])->name('create')->middleware(['auth', 'verified']);
     Route::post('/save', [DisciplineController::class, 'save'])->name('save')->middleware(['auth', 'verified']);
+    Route::get('/edit/{id}', [DisciplineController::class, 'edit'])->name('edit')->middleware(['auth', 'verified']);
 });
 
 Route::prefix('/pro')->name('pro.')->group( function(){
