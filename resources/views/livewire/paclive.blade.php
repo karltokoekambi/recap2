@@ -25,9 +25,7 @@
             @endforeach
         </select>
 
-        <a href="{{route('pac.primegen')}}">
-            <button class="px-6 py-3 bg-blue-600 rounded-md text-white font-medium tracking-wide hover:bg-blue-500 ml-3">Génerer les primes annuelles</button>
-        </a>
+        <button class="px-6 py-3 bg-blue-600 rounded-md text-white font-medium tracking-wide hover:bg-blue-500 ml-3" wire:click="primeGen">Génerer les primes annuelles</button>
     </div>
 
     <div class="flex flex-col mt-6">
@@ -89,9 +87,16 @@
                                 @if($selection == 0 && isset($contrats[$emp->id][$year]) && isset($contrats[$emp->id][$year][$m]))
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">{{ $contrats[$emp->id][$year][$m] }}</td>
                                 @else
-                                    @if(($m<10 && isset($contrats[$emp->id][0]['nb']) && str_contains($contrats[$emp->id][0]['date'], $year.'-0'.$m)) || ($m>=10 && isset($contrats[$emp->id][0]['nb']) && str_contains($contrats[$emp->id][0]['date'], $year.'-'.$m)))
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">{{ $contrats[$emp->id][0]['nb'] }}</td>
-                                    @else
+                                    @php($flag = true)
+                                    @if(isset($contrats[$emp->id]))
+                                        @foreach($contrats[$emp->id] as $contract)
+                                            @if(($m<10 && isset($contract['nb']) && str_contains($contract['date'], $year.'-0'.$m)) || ($m>=10 && isset($contract['nb']) && str_contains($contract['date'], $year.'-'.$m))    )
+                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">{{ $contract['nb'] }}</td>
+                                                @php($flag = false)
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                    @if($flag)
                                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500"></td>
                                     @endif
                                 @endif

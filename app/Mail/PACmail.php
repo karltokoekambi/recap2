@@ -13,12 +13,16 @@ class PACmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public array $primes = [];
+    public int $annee;
+
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($primes, $annee)
     {
-        //
+        $this->primes = $primes;
+        $this->annee = $annee;
     }
 
     /**
