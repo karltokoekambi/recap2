@@ -12,14 +12,7 @@ class ATController extends Controller
 {
     //
     public function index(){
-        $at = AccidentTravail::orderBy('date_accident', 'desc')
-            ->addSelect(['employe_nom' => Employe::select('nom')->whereColumn('id', 'employe_id')])
-            ->addSelect(['employe_prenom' => Employe::select('prenom')->whereColumn('id', 'employe_id')])
-            ->get();
-//        dd($at);
-        return view('features.AT.AT', [
-            'at'    => $at
-        ]);
+        return view('features.AT.AT');
     }
 
     public function create(){

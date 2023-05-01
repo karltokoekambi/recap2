@@ -9,6 +9,13 @@ class Absence extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'employe_id',
+        'type_absence_id',
+        'date',
+        'nb_jours_absence'
+    ];
+
     public function typeAbsence(){
         return $this->belongsTo(TypeAbsence::class);
     }

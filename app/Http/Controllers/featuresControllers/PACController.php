@@ -61,19 +61,37 @@ class PACController extends Controller
     }
 
     public function abssave(StoreAbsRequest $request){
-//        foreach(Employe::all() as $emp){
-//            $data = $request->validated();
-//            $condition = $request->input('hours.'.$emp->id);
-//            if(isset( $condition)){
-//                echo 'ok';
-//                Absence::create([
-//                    'employe_id' => $request->input('employee'),
-//                    'type_absence_id' => $request->input('type'),
-//                    'date' => $request->input('date'),
-//                    'nb_jours_absence' => $request->input('hours.'.$emp->id)
-//                ]);
-//            }
-//        }
+        $month = date('m',strtotime($request->input('date')));
+        $year = date('Y',strtotime($request->input('date')));
+        //dd($month, $year);
+        foreach(Employe::all() as $emp){
+            $data = $request->validated();
+            $condition = $request->input('hours_'.$emp->id);
+            //dd(intval($condition));
+            if(!empty($condition)){
+            $abs = Absence::where('employe_id', $emp->id)
+                    ->where('type_absence_id', $request->input('type'))
+                    ->whereYear('date',$year)
+                    ->whereMonth('date', $month)
+                    ->first();
+            //dd($abs);
+                if(!isset($abs)) {
+                    Absence::create([
+                        'employe_id' => $emp->id,
+                        'type_absence_id' => $request->input('type'),
+                        'date' => $request->input('date'),
+                        'nb_jours_absence' => intval($condition)
+                    ]);
+                }else{
+                    $abs->update([
+                        'employe_id' => $emp->id,
+                        'type_absence_id' => $request->input('type'),
+                        'date' => $request->input('date'),
+                        'nb_jours_absence' => intval($condition)
+                    ]);
+                }
+            }
+        }
         return redirect('PAC');
     }
 

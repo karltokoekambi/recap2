@@ -67,7 +67,7 @@ Route::prefix('/PAC')->name('pac.')->group( function(){
     Route::post('/save', [PACController::class, 'save'])->name('save')->middleware(['auth', 'verified']);
 
     Route::get('/abscreate', [PACController::class, 'abscreate'])->name('abscreate')->middleware(['auth', 'verified']);
-    Route::get('/abssave', [PACController::class, 'abssave'])->name('abssave')->middleware(['auth', 'verified']);
+    Route::post('/abssave', [PACController::class, 'abssave'])->name('abssave')->middleware(['auth', 'verified']);
 
     Route::get('/contractcreate', [PACController::class, 'contractcreate'])->name('contractcreate')->middleware(['auth', 'verified']);
     Route::post('/contractsave', [PACController::class, 'contractsave'])->name('contractsave')->middleware(['auth', 'verified']);

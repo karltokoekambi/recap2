@@ -9,7 +9,7 @@
         </a>
 
         <a href="{{route('pac.abscreate')}}">
-            <button class="px-6 py-3 bg-blue-600 rounded-md text-white font-medium tracking-wide hover:bg-blue-500 ml-3">Ajouter des absences</button>
+            <button class="px-6 py-3 bg-blue-600 rounded-md text-white font-medium tracking-wide hover:bg-blue-500 ml-3">Définir les absences</button>
         </a>
 
         <select class="px-6 py-3 rounded-md font-medium tracking-wide ml-3" name="year" wire:model="year">

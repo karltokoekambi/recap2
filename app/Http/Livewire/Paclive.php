@@ -7,8 +7,6 @@ use App\Models\Absence;
 use App\Models\Employe;
 use App\Models\HeuresContrat;
 use App\Models\TypeAbsence;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
@@ -124,21 +122,12 @@ class Paclive extends Component
     }
 
     public function getAbsences($empId, $type){
-        //if($this->year == 0){
-        //    $return = Absence::select('date','nb_jours_absence as nb')
-        //        ->orderBy('date', 'asc')
-        //        ->where('employe_id', $empId)
-        //        ->where('type_absence_id', $type)
-        //        ->whereyear('date', date('Y'))
-        //        ->get();
-        //}else{
-            $return =  Absence::select('date','nb_jours_absence as nb')
-                ->orderBy('date', 'asc')
-                ->where('employe_id', $empId)
-                ->where('type_absence_id', $type)
-                ->whereyear('date', $this->year)
-                ->get();
-        //}
+        $return =  Absence::select('date','nb_jours_absence as nb')
+            ->orderBy('date', 'asc')
+            ->where('employe_id', $empId)
+            ->where('type_absence_id', $type)
+            ->whereyear('date', $this->year)
+            ->get();
         return $return;
     }
     public function getAbsencesByYear($empId, $type, $year){

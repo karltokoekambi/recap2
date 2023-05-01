@@ -1,6 +1,7 @@
 @extends('dashboard.layouts.master')
 
 @section('body')
+    <h3>reste à ajouter modification/suppression des disciplines</h3>
         <h2 class="text-center">DISCIPLINE</h2>
         <a href="{{route('disc.create')}}">
             <button class="px-6 py-3 bg-blue-600 rounded-md text-white font-medium tracking-wide hover:bg-blue-500 ml-3">Ajouter</button>
